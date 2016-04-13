@@ -9,6 +9,12 @@
 <body>
 <!-- DUONG
 This should contain the actual call that removes the school-->
-
+<%@include file="verify_edit.jsp"%>
+<%
+String schoolName = request.getParameter("school");
+// Alex, add the method to find school based on school name here
+theUCObj.removeSchool(school);
+response.redirect(Menu.jsp);
+%>
 </body>
 </html>

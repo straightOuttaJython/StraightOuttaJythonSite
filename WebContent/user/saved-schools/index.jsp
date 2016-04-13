@@ -11,6 +11,34 @@
 This is the Manage Saved Schools page. The view button should direct
 to ../view-school.jsp and the remove button should direct 
 to remove-school-action.jsp.-->
+<%@include file="verify_edit.jsp"%>
 
+<%
+School[] schools = theUCObj.manageSchools();
+int len = schools.length()
+%>
+
+<table border="2" style="width: 481px; height: 65px; ">
+     <tbody>
+      <% for(int r = 0;r<=len;r++) { %>
+         <tr>
+<td>
+<%String schoolName = schools[r].getName();%>
+<form method="post" action="remove_school_action.jsp">
+	<input type="hidden" name="school" value="<%=schoolName">
+	<input value="Remove" type="submit"> 
+</form></td>
+
+<td>
+<%=schoolName%></td>
+<td>
+<form method="post" action="view_expanded_school.jsp">
+	<input type="hidden" name="school">
+	<input value="View" type="submit" value="<%=schoolName"> 
+</form></td>
+         </tr>
+         <% } %>
+     </tbody>
+ </table>
 </body>
 </html>
