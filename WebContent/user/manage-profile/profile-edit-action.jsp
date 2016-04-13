@@ -9,6 +9,17 @@
 <body>
 <!-- DUONG
 This is where you make the actual call to edit a user-->
-
+<%@include file="verify_edit.jsp"%>
+<%
+	String firtsName = request.getParameter("FirstName");
+	String lastName = request.getParameter("LastName");
+	String userName = request.getParameter("Username");
+	String password = request.getParameter("password");
+	char type = request.getParameter("Type");
+	if(type!='a'||type!='u')
+		response.sendRedirect("classexercise.jsp?Error=type");
+    theUCObj.editUser(firtsName, lastName, userName, password, type);
+    response.sendRedirect("Menu.jsp");
+%>
 </body>
 </html>
