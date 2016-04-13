@@ -4,12 +4,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Add User</title>
 </head>
 <body>
-ERIN
-add and edit should be similar in a lot of ways.
-this page directs to add-user-action.jsp
+
+<form method="post" action="add-user-action.jsp" name="editUser">
+		<br>
+		<table style="text-align: left; width: 266px; height: 228px;"
+			border="1" cellpadding="2" cellspacing="2">
+			<tbody>
+				<tr>
+					<td style="vertical-align: top;">First Name<br>
+					</td>
+					<td style="vertical-align: top;"><input name="FirstName"
+						value=""><br></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;">Last Name<br>
+					</td>
+					<td style="vertical-align: top;"><input name="LastName"
+						value=""></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;">Username<br>
+					</td>
+					<td style="vertical-align: top;"><input name="Username"
+						value=""></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;">Password<br>
+					</td>
+					<td style="vertical-align: top;"><input name="Password"
+						value=""></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;">Type<br>
+					</td>
+					<td style="vertical-align: top;"><input name="Type"
+						value=""></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: top;"><input value="Add"
+						name="Add" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td style="vertical-align: top;"><input value="Reset"
+						name="Reset" type="reset"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+	</form>
 
 
 </body>
