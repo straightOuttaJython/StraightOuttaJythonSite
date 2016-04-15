@@ -43,12 +43,16 @@ This page redirects to results.jsp. -->
 	                   perAdmitted, perEnrolled, academicsScale,
 	                   socialScale, qualityOfLifeScale};
 	String[] emphases = {emphases1, emphases2, emphases3, emphases4, emphases5};
+	for(int i = 0; i<school.length;i++) {
+		System.out.println(school[i]);
+	}for(int i = 0; i<emphases.length;i++) {
+		System.out.println(emphases[i]);
+	}
 	UserUI ui = new UserUI(new Person());
 	School[] schoolArray = new School[1];
 	schoolArray[0] = new School();
 	try {
 		 schoolArray = ui.searchForSchools(school, emphases);
-		 session.setAttribute("SearchError", 0);
 		 session.setAttribute("SearchResults", schoolArray);
 		 response.sendRedirect("results.jsp");
 	} catch(NumberFormatException iae) {

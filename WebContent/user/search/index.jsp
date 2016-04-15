@@ -15,7 +15,7 @@
 							} else if(errorNum == 2) {
 								out.println("	There was something wrong with one of the search terms that you entered, try again.");
 							} else if(errorNum == 3) {
-								out.println("	One of your searcg terms was not set properly, try again.");
+								out.println("	One of your search terms was not set properly, try again.");
 							}
 							%>
 							<br>
