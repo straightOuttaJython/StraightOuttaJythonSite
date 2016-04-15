@@ -18,7 +18,7 @@
 			<tr>
 				<td>
 					<FORM METHOD="LINK" ACTION="add-user.jsp">
-						<input value="Add User" name="Add User" type="submit">
+						<input value="Add User"type="submit">
 					</FORM>
 				</td>
 			</tr>
@@ -50,36 +50,37 @@
 			</tr>
 			
 			<%
-			for(int i = 0; i < ph.getAllUsers().length; i++)
+			Person[] listOfPeople = ph.getAllUsers();
+			for(int i = 0; i < listOfPeople.length; i++)
 			{
-				p = ph.getAllUsers()[i];
+				p = listOfPeople[i];
 				out.print("<tr>");
 					out.print("<td>");
 						out.print("<input value=\"Deactivate\" name=\"Deactivate\" type=\"submit\">");
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getFirstName());	
+						out.print(p.getFirstName());	
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getLastName());
+						out.print(p.getLastName());
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getUsername());
+						out.print(p.getUsername());
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getPassword());
+						out.print(p.getPassword());
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getType());
+						out.print(p.getType());
 					out.print("</td>");
 					
 					out.print("<td>");
-						out.print(ph.getAllUsers()[i].getStatus());
+						out.print(p.getStatus());
 					out.print("</td>");
 					
 					out.print("<td>");

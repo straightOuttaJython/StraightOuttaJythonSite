@@ -15,7 +15,7 @@ Person p = (Person)pph.getPerson(username);%>
     out.println("Edit user : " + p.getUsername());
 %>
 
-	<form method="post" action="edit-user-action.jsp" name="editUser">
+	<form method="post" action="edit-university-action.jsp" name="editUser">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
 			border="1" cellpadding="2" cellspacing="2">
