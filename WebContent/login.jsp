@@ -11,6 +11,24 @@
 	calls login-action.jsp-->
 		<form method="post" action="login-action.jsp" name="Login"><br>
 				User Login
+				<br>
+				<%
+					try {
+						int errorNum =(Integer) session.getAttribute("Login Error");
+						if(errorNum != 0) {
+							if(errorNum == 1) {
+								out.println("	Please enter a username and password!");
+							} else if(errorNum == 2) {
+								out.println("	The account you tried to access is inactive, please contact an admin!");
+							} else if(errorNum == 3) {
+								out.println("	Invalid username or password");
+							}
+						}
+						session.setAttribute("Login Error", -1);
+					} catch (NullPointerException npe) {
+						
+					}
+				%>
 			<br>
 			<br>
 				Username:
