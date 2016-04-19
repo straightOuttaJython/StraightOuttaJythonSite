@@ -20,8 +20,10 @@ those are the names of the menus-->
 		char type = person.getType();
 		if(type == 'a') {
 			response.sendRedirect("admin/index.jsp");
+			//AdminUI
 		} else {
 			response.sendRedirect("user/index.jsp");
+			//UserUI
 		}
 	} catch (InactiveAccountException e) {
 		session.setAttribute("Login Error", 2);
