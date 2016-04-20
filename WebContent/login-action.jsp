@@ -10,8 +10,7 @@ those are the names of the menus-->
 	String username = (String) request.getParameter("Username");
 	String password = (String) request.getParameter("Password");
 	if(username.equals("") || password.equals("")) {
-		session.setAttribute("Login Error", 1);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login.jsp?Error=2");
 		return;
 	}
 	LoginUI login = new LoginUI();
@@ -19,18 +18,18 @@ those are the names of the menus-->
 		Person person = login.login(username, password);
 		char type = person.getType();
 		if(type == 'a') {
+			AdminUI aui = new AdminUI();
+			session.setAttribute("UI", aui);
 			response.sendRedirect("admin/index.jsp");
-			//AdminUI
 		} else {
+			UserUI ui = new UserUI(person);
+			session.setAttribute("UI", ui);
 			response.sendRedirect("user/index.jsp");
-			//UserUI
 		}
 	} catch (InactiveAccountException e) {
-		session.setAttribute("Login Error", 2);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login.jsp?Error=2");
 	} catch (IllegalArgumentException e) {
-		session.setAttribute("Login Error", 3);
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login.jsp?Error=3");
 	}
 	return;
 %>

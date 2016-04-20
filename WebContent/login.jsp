@@ -14,7 +14,7 @@
 				<br>
 				<%
 					try {
-						int errorNum =(Integer) session.getAttribute("Login Error");
+						int errorNum =Integer.parseInt(request.getParameter("Error"));
 						if(errorNum != 0) {
 							if(errorNum == 1) {
 								out.println("	Please enter a username and password!");
@@ -25,7 +25,7 @@
 							}
 						}
 						session.setAttribute("Login Error", -1);
-					} catch (NullPointerException npe) {
+					} catch (NumberFormatException npe) {
 						
 					}
 				%>
