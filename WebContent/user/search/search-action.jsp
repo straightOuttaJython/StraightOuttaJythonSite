@@ -43,7 +43,7 @@ This page redirects to results.jsp. -->
 	                   perAdmitted, perEnrolled, academicsScale,
 	                   socialScale, qualityOfLifeScale};
 	String[] emphases = {emphases1, emphases2, emphases3, emphases4, emphases5};
-	UserUI ui = new UserUI(new Person());
+	UserUI ui = (UserUI) session.getAttribute("UI");
 	School[] schoolArray = new School[1];
 	schoolArray[0] = new School();
 	try {
