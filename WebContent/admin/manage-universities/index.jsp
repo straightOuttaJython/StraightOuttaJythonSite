@@ -17,7 +17,7 @@
 		<tbody>
 			<tr>
 				<td>
-					<FORM METHOD="LINK" ACTION="add-university-action.jsp">
+					<FORM METHOD="LINK" ACTION="add-university.jsp">
 						<input value="Add School" name="Add User" type="submit">
 					</FORM>
 				</td>
@@ -94,7 +94,6 @@
 					
 					<tr>
 				<td>
-				School
 				<%=s.getName()%>
 				</td>
 				<td>
