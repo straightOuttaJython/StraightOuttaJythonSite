@@ -22,6 +22,8 @@
 								out.println("	The account you tried to access is inactive, please contact an admin!");
 							} else if(errorNum == 3) {
 								out.println("	Invalid username or password");
+							}else if(errorNum == -4) {
+								out.println("	You need to LOG-IN!");
 							}
 						}
 						session.setAttribute("Login Error", -1);

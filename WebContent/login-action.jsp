@@ -14,6 +14,7 @@ those are the names of the menus-->
 		return;
 	}
 	LoginUI login = new LoginUI();
+	session.setAttribute("LoginUI", login);
 	try {
 		Person person = login.login(username, password);
 		char type = person.getType();
