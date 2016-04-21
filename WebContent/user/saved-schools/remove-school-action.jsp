@@ -11,11 +11,9 @@
 This should contain the actual call that removes the school-->
 <%
 	String schoolName = request.getParameter("school");
-	PersonHome ph3 = (PersonHome)session.getAttribute("PersonHome");
-	SchoolHome sh3 = (PersonHome)session.getAttribute("SchoolHome");
-	School school = sh3.getSchool(schoolName);
-	ph3.removeSchool(school);
-	response.redirect("index.jsp");
+	
+	
+	response.sendRedirect("index.jsp");
 %>
 </body>
 </html>

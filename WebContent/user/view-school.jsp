@@ -12,7 +12,7 @@ This is the expanded school view.
 I would reccomend storing the school to be viewed
 in the sesion variable and then getting it from there. -->
 <%  
-	School school = request.getParameter("school")
+	String school = request.getParameter("school");
     String state = school.getState();
 	String location = school.getLocation();
 	String control = school.getControl();
