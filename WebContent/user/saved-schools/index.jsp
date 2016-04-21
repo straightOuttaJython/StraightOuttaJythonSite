@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*"%>
+    pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import="cmc.entity.*"%>
+
+<%	
+	UserUI ui = (UserUI) session.getAttribute("UserUI");
+	SchoolHome sh = new SchoolHome();
+	School[] schools = ui.manageSchools();
+	int len = schools.length;
+%>
 
   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,10 +24,10 @@ to remove-school-action.jsp.-->
 
 <table border="2" style="width: 481px; height: 65px; ">
      <tbody>
-      <% for(int r = 0;r<=10;r++) { %>
+      <% for(int r = 0;r<=len;r++) { %>
          <tr>
 <td>
-<%String schoolName = "Du";%>
+<%String schoolName = schools[r].getName();%>
 <form method="post" action="remove-school-action.jsp">
 	<input type="hidden" name="school" value="<%=schoolName%>">
 	<input value="Remove" type="submit"> 
@@ -37,5 +44,6 @@ to remove-school-action.jsp.-->
          <% } %>
      </tbody>
  </table>
+ <% session.setAttribute("SchoolHome", sh);%>
 </body>
 </html>
