@@ -12,7 +12,7 @@ This is the expanded school view.
 I would reccomend storing the school to be viewed
 in the sesion variable and then getting it from there. -->
 <%  
-	String schoolName = request.getParameter("school");
+	String schoolName = (String) request.getParameter("school");
 	UserUI ui = (UserUI) session.getAttribute("UI");
 	School school = ui.getSchool(schoolName);
     String state = school.getState();
@@ -36,7 +36,7 @@ in the sesion variable and then getting it from there. -->
 <table>
 	<tr>
 	<td>School</td>
-	<td><%=school%></td>
+	<td><%=school.getName()%></td>
 	</tr>
 	<tr>
 	<td>State</td>
@@ -86,10 +86,12 @@ in the sesion variable and then getting it from there. -->
 	<td>percEnrolled</td>
 	<td><%=percEnrolled%></td>
 	</tr>
-	<tr>
-	<td>emphases</td>
-	<td><%=emphases%></td>
-	</tr>
+	<%for(int i = 0; i < emphases.length; i++) { %>
+		<tr>
+			<td>emphases</td>
+			<td><%=emphases[i]%></td>
+		</tr>
+	<%} %>
 	<tr>
 	<td>academic</td>
 	<td><%=academic%></td>
