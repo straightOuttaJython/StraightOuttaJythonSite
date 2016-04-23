@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Viewing School</title>
 </head>
 <body>
 <!-- DUONG
@@ -13,8 +13,8 @@ I would reccomend storing the school to be viewed
 in the sesion variable and then getting it from there. -->
 <%  
 	String schoolName = request.getParameter("school");
-	SchoolHomeHome sh = (SchoolHome)session.getAttribute("SchoolHome");
-	School school = sh.getSchool(schoolName);
+	UserUI ui = (UserUI) session.getAttribute("UI");
+	School school = ui.getSchool(schoolName);
     String state = school.getState();
 	String location = school.getLocation();
 	String control = school.getControl();
