@@ -3,7 +3,6 @@
     
     <%	
 	AdminUI aUI = new AdminUI();
-	SchoolHome sh = new SchoolHome();
 	School s = new School();
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -86,7 +85,7 @@
 			</tr>
 			
 			<%
-			School[] schoolList = sh.listOfSchools();
+			School[] schoolList = aUI.getSchoolList();
 			for(int i = 0; i < schoolList.length; i++)
 			{
 				s = schoolList[i];
@@ -159,7 +158,7 @@
 			%>
 			<input name="school" value="<%=s.getName() %>" type="hidden">
 			<%
-			session.setAttribute("SchoolHome", sh);
+			session.setAttribute("Admin UI", aUI);
 			out.print("</FORM>");
 			out.print("</td>");
 		

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="cmc.home.*" import="cmc.entity.*" %>
+    pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*" %>
     
     <%
-    SchoolHome ssh = (SchoolHome)session.getAttribute("SchoolHome"); 
+    AdminUI aui = (AdminUI)session.getAttribute("Admin UI"); 
     String school = request.getParameter("school");
-    School s = (School)ssh.getSchool(school);
+    School s = (School)aui.getSchool(school);
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -131,7 +131,7 @@
 				</td>
 				<td style="vertical-align: top;">
 				<%
-					String[] ll = ssh.getEmp(s.getName());
+					String[] ll = aui.getEmph(s.getName());
 				%>
 						<input name="Emphases1" value="<%=ll[0]%>">
 						<input name="Emphases2" value="<%=ll[1]%>">
