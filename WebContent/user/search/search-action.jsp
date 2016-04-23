@@ -43,12 +43,7 @@ This page redirects to results.jsp. -->
 	                   perAdmitted, perEnrolled, academicsScale,
 	                   socialScale, qualityOfLifeScale};
 	String[] emphases = {emphases1, emphases2, emphases3, emphases4, emphases5};
-	for(int i = 0; i<school.length;i++) {
-		System.out.println(school[i]);
-	}for(int i = 0; i<emphases.length;i++) {
-		System.out.println(emphases[i]);
-	}
-	UserUI ui = new UserUI(new Person());
+	UserUI ui = (UserUI) session.getAttribute("UI");
 	School[] schoolArray = new School[1];
 	schoolArray[0] = new School();
 	try {
@@ -56,10 +51,13 @@ This page redirects to results.jsp. -->
 		 session.setAttribute("SearchResults", schoolArray);
 		 response.sendRedirect("results.jsp");
 	} catch(NumberFormatException iae) {
+		System.out.println(iae);
 		response.sendRedirect("index.jsp?Error=1");
 	} catch(IllegalArgumentException nfe) {
+		System.out.println(nfe.getMessage());
 		response.sendRedirect("index.jsp?Error=2");
 	} catch(IllegalStateException iae) {
+		System.out.println(iae.getMessage());
 		response.sendRedirect("index.jsp?Error=3");
 	}
 %>

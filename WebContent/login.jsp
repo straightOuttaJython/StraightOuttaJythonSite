@@ -14,7 +14,7 @@
 				<br>
 				<%
 					try {
-						int errorNum =(Integer) session.getAttribute("Login Error");
+						int errorNum =Integer.parseInt(request.getParameter("Error"));
 						if(errorNum != 0) {
 							if(errorNum == 1) {
 								out.println("	Please enter a username and password!");
@@ -22,10 +22,12 @@
 								out.println("	The account you tried to access is inactive, please contact an admin!");
 							} else if(errorNum == 3) {
 								out.println("	Invalid username or password");
+							}else if(errorNum == -4) {
+								out.println("	You need to LOG-IN!");
 							}
 						}
 						session.setAttribute("Login Error", -1);
-					} catch (NullPointerException npe) {
+					} catch (NumberFormatException npe) {
 						
 					}
 				%>

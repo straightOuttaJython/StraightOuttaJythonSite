@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import=""%>
+    pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Manage Profile</title>
 </head>
 <body>
 <!-- DUONG
@@ -14,8 +15,9 @@ it should direct to profile-edit-action.jsp.-->
 	String myErrors = request.getParameter("Error");
 	if (myErrors!=null && myErrors.equals("type"))
 		out.println("Type should be only either 'a' or 'u'!");
-	else if (myErrors!=null && myErrors.equals("nullUser"))
+	else if(myErrors!=null && myErrors.equals("type")){
 		out.println("Invalid User");
+	}
 %>
  
 <form method="post" action="profile-edit-action.jsp">

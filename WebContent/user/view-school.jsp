@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import=""%>
+    pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import="cmc.entity.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,9 +11,10 @@
 This is the expanded school view. 
 I would reccomend storing the school to be viewed
 in the sesion variable and then getting it from there. -->
-<%@include file="verify_edit.jsp"%>
 <%  
-	School school = request.getParameter("school")
+	String schoolName = request.getParameter("school");
+	SchoolHomeHome sh = (SchoolHome)session.getAttribute("SchoolHome");
+	School school = sh.getSchool(schoolName);
     String state = school.getState();
 	String location = school.getLocation();
 	String control = school.getControl();
