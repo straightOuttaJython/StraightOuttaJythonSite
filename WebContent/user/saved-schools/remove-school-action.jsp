@@ -11,7 +11,7 @@
 This should contain the actual call that removes the school-->
 <%
 	String schoolName = request.getParameter("school");
-	SchoolHomeHome sh = (SchoolHome)session.getAttribute("SchoolHome");
+	SchoolHome sh = (SchoolHome)session.getAttribute("SchoolHome");
 	School school = sh.getSchool(schoolName);
 	UserUI ui = (UserUI) session.getAttribute("UserUI");
 	ui.removeSchool(school);
