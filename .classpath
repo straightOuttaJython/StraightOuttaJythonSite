@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/home/f14/makounniyom/git/StraightOuttaJythonSite/WebContent/WEB-INF/lib/CMC-StraightOuttaJython-JAR.jar"/>
+	<classpathentry kind="lib" path="/net/home/f14/makounniyom/git/StraightOuttaJythonSite/WebContent/WEB-INF/lib/CMC-StraightOuttaJython-JAR.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
