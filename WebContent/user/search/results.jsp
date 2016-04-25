@@ -1,5 +1,6 @@
 <%@ page import="cmc.entity.*" %>
-<%@include file="head-and-header.html" %>
+<head>
+</head>
 <p id="demo"></p>
 <p id="column"></p>
 <p id="row"></p>
@@ -32,4 +33,3 @@
 		}
 	%>
 	</table>
-	</body>

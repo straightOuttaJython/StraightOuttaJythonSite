@@ -3,7 +3,14 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<%@include file="head-and-header.html" %>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Manage Profile</title>
+</head>
+<body>
+<!-- DUONG
+This is the Manage Profile page.
+it should direct to profile-edit-action.jsp.-->
 <%
 	String myErrors = request.getParameter("Error");
 	if (myErrors!=null && myErrors.equals("type"))

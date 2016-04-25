@@ -8,7 +8,12 @@
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<%@include file="head-and-header.html" %>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Edit University</title>
+</head>
+<body>
+
 		<form method="post" action="edit-university-action.jsp" name="editUser">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"
