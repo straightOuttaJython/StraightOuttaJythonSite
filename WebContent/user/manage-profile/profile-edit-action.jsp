@@ -23,7 +23,7 @@ This is where you make the actual call to edit a user-->
 	}
 	else{
 		ui.editUser(firstName, lastName, password);
-		response.sendRedirect("user/index.jsp");
+		response.sendRedirect("index.jsp");
 	}
 %>
 </body>

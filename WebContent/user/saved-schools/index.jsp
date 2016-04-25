@@ -3,7 +3,6 @@
 
 <%	
 	UserUI ui = (UserUI) session.getAttribute("UserUI");
-	SchoolHome sh = new SchoolHome();
 	School[] schools = ui.manageSchools();
 	int len = schools.length;
 %>
@@ -37,13 +36,12 @@ to remove-school-action.jsp.-->
 <%=schoolName%></td>
 <td>
 <form method="post" action="view-school.jsp">
-	<input type="hidden" name="school">
-	<input value="View" type="submit" value="<%=schoolName%>"> 
+	<input type="hidden" name="school" value="<%=schoolName%>">
+	<input value="View" type="submit"> 
 </form></td>
          </tr>
          <% } %>
      </tbody>
  </table>
- <% session.setAttribute("SchoolHome", sh);%>
 </body>
 </html>
