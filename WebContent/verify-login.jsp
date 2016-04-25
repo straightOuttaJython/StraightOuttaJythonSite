@@ -1,11 +1,11 @@
-<%@ page import="cmc.ui.*" import="cmc.entity.Person"%>
+<%@ page import="cmc.ui.*" import="cmc.entity.*"%>
 <%
-	LoginUI loginUi = (LoginUI) session.getAttribute("LoginUI");
-	Person logged = new Person();
-	if(loginUi != null) {
-		logged = loginUi.getLoggedPerson();
+	Object loginUi = session.getAttribute("LoginUI");
+	Person logged;
+	if(loginUi != null && loginUi instanceof LoginUI) {
+		logged = (LoginUI)loginUi.getLoggedPerson();
 	}
-	if ((loginUi==null) || (logged.getFirstName().equals("Empty"))){
+	else {
 		String contextPath = request.getContextPath();
 		response.sendRedirect(response.encodeRedirectURL(contextPath + "/login.jsp?Error=-4")); 
 	    return;
