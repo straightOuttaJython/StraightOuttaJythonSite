@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="cmc.home.*"%>
+    pageEncoding="UTF-8" import="cmc.ui.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,9 +11,8 @@
 This should contain the actual call that removes the school-->
 <%
 	String schoolName = request.getParameter("school");
-	SchoolHome sh = (SchoolHome)session.getAttribute("SchoolHome");
-	School school = sh.getSchool(schoolName);
 	UserUI ui = (UserUI) session.getAttribute("UserUI");
+	School school = ui.getSchool(schoolName);
 	ui.removeSchool(school);
 	response.sendRedirect("index.jsp");
 %>
