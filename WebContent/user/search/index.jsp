@@ -2,30 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="/verify-login.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<%
-					try {
-						int errorNum =Integer.parseInt(request.getParameter("Error"));
-						if(errorNum != 0) {
-							if(errorNum == 1) {
-								out.println("	There was a problem with one of the numbers you entered, try again.");
-							} else if(errorNum == 2) {
-								out.println("	There was something wrong with one of the search terms that you entered, try again.");
-							} else if(errorNum == 3) {
-								out.println("	One of your search terms was not set properly, try again.");
-							}
-							%>
-							<br>
-							<br>
-							<%
-						}
-						session.setAttribute("Login Error", -1);
-					} catch (NullPointerException npe) {
-						
-					} catch (NumberFormatException nfe) {
-						
-					}
-					session.setAttribute("SearchError", 0);
-				%>
 <html>
 	<%@include file="/head.jsp"%>
 	<%@include file="/header.jsp"%>
@@ -35,7 +11,27 @@
 					<span>Search for Schools</span>
 				</div>
 				<div class="inner-content">
-					<p>Please enter each thingy dude</p>
+					<p><%
+		try {
+			int errorNum =Integer.parseInt(request.getParameter("Error"));
+			if(errorNum != 0) {
+				if(errorNum == 1) {
+					out.println("	There was a problem with one of the numbers you entered, try again.");
+				} else if(errorNum == 2) {
+					out.println("	There was something wrong with one of the search terms that you entered, try again.");
+				} else if(errorNum == 3) {
+					out.println("	One of your search terms was not set properly, try again.");
+				}
+			}
+			session.setAttribute("Login Error", -1);
+		} catch (NullPointerException npe) {
+			
+		} catch (NumberFormatException nfe) {
+			
+		}
+		session.setAttribute("SearchError", 0);
+	%>
+	</p>
 					<form method="post" action="search-action.jsp" name="SearchForSchools">
 						<dl class="input-holder">
 							<dt>School Name:</dt>
@@ -46,12 +42,14 @@
 								<dd><input type="radio" name="Location" value="SUBURBAN"> Suburban&nbsp;
 								<input type="radio" name="Location" value="URBAN"> Urban&nbsp;
 								<input type="radio" name="Location" value="SMALL-CITY"> Small City&nbsp;
-								<input type="radio" name="Location" value="-1"> Unknown</dd><br>
+								<input type="radio" name="Location" value="-1"> Unknown
+								<input type="hidden" name="Location" value=""></dd><br>
 							<dt>Control:</dt>
 								<dd><input type="radio" name="Control" value="PRIVATE"> Private&nbsp;
 								<input type="radio" name="Control" value="STATE"> State&nbsp;
 								<input type="radio" name="Control" value="CITY"> City&nbsp;
-								<input type="radio" name="Control" value="-1"> Unknown</dd><br>
+								<input type="radio" name="Control" value="-1"> Unknown
+								<input type="hidden" name="Control" value=""></dd><br>
 							<dt>Number of Students:</dt>
 								<dd>from&nbsp;<input type="text" name="NumberOfStudents1" value=""></dd><br>
 								<dd>to&nbsp;<input type="text" name="NumberOfStudents2" value=""></dd><br>
@@ -95,8 +93,8 @@
 								<dd><input type="text" name="Emphases4" value=""></dd><br>
 								<dd><input type="text" name="Emphases5" value=""></dd>
 						</dl>
-						<input name="Submit" value="Submit" type="submit"><br>
-						<input name="Reset" value="Reset" type="reset">
+						<input name="Submit" value="SUBMIT" type="submit"><br>
+						<input name="Reset" value="RESET" type="reset">
 					</form>
 				</div>
 			</div>

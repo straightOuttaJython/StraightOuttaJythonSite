@@ -113,10 +113,10 @@ body {
   font-size: 20px;
 }
 .pane.multi {
-  font-size: 20px;
+  font-size: 16px;
   overflow: hidden;
   margin: 4em 2em 2em 2em;
-  width: 16em;
+  width: 24em;
   transition: all .3s;
 }
 .pane.multi:hover {
@@ -126,15 +126,20 @@ body {
 .pane.multi input[type="submit"] {
   margin-top: .75em;
 }
+.pane.multi input[type="submit"][value="View"] {
+  float: left;
+}
 .pane.multi dl {
   width: 100%;
 }
 .pane.multi dl dd {
   width: 45%;
+  max-height: 1.35em;
   overflow: hidden;
 }
 .pane.multi dl dt {
   width: 55%;
+  max-height: 1.35em;
   overflow: hidden;
 }
 .pane > .name-bar {
@@ -159,6 +164,10 @@ body {
 dl {
   display: table;
   -webkit-margin-before: 0;
+}
+dl form {
+	line-height: 0;
+	margin: 0;
 }
 dt {
   text-align: left;
@@ -201,33 +210,37 @@ dd {
 form {
   background-color: #F4F4F4;
   line-height: 2em;
+  position: relative;
 }
 form input {
-  background-color: #b4b4b4;
+  background-color: #dbdbdb;
   line-height: 1.5em;
 }
-form input[type="submit"],form input[type="reset"] {
+form input[type="submit"],input[type="reset"] {
   line-height: 2em;
 }
 form input[type="reset"] {
 	margin-top: 1em;
 }
 form input[readonly] {
-  background-color: #dcdcdc;
-  color: #404040;
+  background-color: inherit;
+  border: none;
 }
 form input[readonly]:focus {
   box-shadow: none;
-  background-color: #dcdcdc;
-  box-shadow: 0 0 0 0.125em #dcdcdc;
+  background-color: inherit;
 }
 form input:focus {
   transition: all .15s;
-  box-shadow: 0 0 0 0.125em #9b9b9b;
-  background-color: #9b9b9b;
+  box-shadow: 0 0 0 0.125em #cecece;
+  background-color: #cecece;
 }
 form dl {
   width: 75%;
+}
+form dl dd {
+  position: absolute;
+  left: 30%;
 }
 input {
   padding: 0 .25em 0 .25em;
