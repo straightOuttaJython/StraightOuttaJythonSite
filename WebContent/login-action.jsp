@@ -19,7 +19,7 @@ those are the names of the menus-->
 		Person person = login.login(username, password);
 		char type = person.getType();
 		if(type == 'a') {
-			AdminUI aui = new AdminUI();
+			AdminUI aui = new AdminUI(person);
 			session.setAttribute("UI", aui);
 			response.sendRedirect("admin/index.jsp");
 		} else {

@@ -206,8 +206,11 @@ form input {
   background-color: #b4b4b4;
   line-height: 1.5em;
 }
-form input[type="submit"] {
+form input[type="submit"],form input[type="reset"] {
   line-height: 2em;
+}
+form input[type="reset"] {
+	margin-top: 1em;
 }
 form input[readonly] {
   background-color: #dcdcdc;
@@ -224,7 +227,7 @@ form input:focus {
   background-color: #9b9b9b;
 }
 form dl {
-  width: 60%;
+  width: 75%;
 }
 input {
   padding: 0 .25em 0 .25em;
@@ -232,17 +235,17 @@ input {
   font: inherit;
   transition: all .3s;
 }
-input[type="submit"] {
+input[type="submit"],input[type="reset"] {
   width: 25%;
   float: right;
   background-color: #1A2775;
   color: #F4F4F4;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover,input[type="reset"]:hover {
   cursor: pointer;
   box-shadow: 0 0 0 0.0625em #1A2775;
 }
-input[type="submit"]:focus {
+input[type="submit"]:focus,input[type="reset"]:focus {
   box-shadow: 0 0 0 0.125em #5580F7;
   background-color: #5580F7;
 }

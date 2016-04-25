@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="/verify-login.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>School Search</title>
-	</head>
 	<%
 					try {
 						int errorNum =Integer.parseInt(request.getParameter("Error"));
@@ -31,84 +26,81 @@
 					}
 					session.setAttribute("SearchError", 0);
 				%>
-	<body>
-		<!-- MATT: This is the entry form for a search. Directs input to search-action.jsp. -->
-		Search Menu
-		<br> 
-		<form method="post" action="search-action.jsp" name="SearchForSchools">
-			<br> 
-			School Name:
-				<input name="SchoolName" value="">
-			<br> 
-			State:
-				<input name="State" value="">
-			<br> 
-			Location:
-				<input name="Location" value="">
-				(SUBURBAN, URBAN, SMALL-CITY or -1 if UNKNOWN)
-			<br> 
-			Control:
-				<input name="Control" value="">
-				(PRIVATE, STATE, CITY or -1 if UNKNOWN)
-			<br> 
-			Number of Students: between
-				<input name="NumberOfStudents1" value=""> and 
-				<input name="NumberOfStudents2" value="">
-			<br> 
-			% Female: between
-				<input name="PerFemale1" value=""> and
-				<input name="PerFemale2" value="">
-			<br> 
-			SAT Verbal: between 
-				<input name="SATVerbal1" value=""> and
-				<input name="SATVerbal2" value="">
-			<br> 
-			SAT Math: between
-				<input name="SATMath1" value=""> and
-				<input name="SATMath2" value="">
-			<br> 
-			Expenses: between
-				<input name="Expenses1" value=""> and
-				<input name="Expenses2" value="">
-			<br> 
-			% Financial Aid: between
-				<input name="PerFinAid1" value=""> and
-				<input name="PerFinAid2" value="">
-			<br> 
-			Number of Applicants: between
-				<input name="NumOfApplicants1" value=""> and
-				<input name="NumOfApplicants2" value="">
-			<br> 
-			% Admitted: between
-				<input name="PerAdmitted1" value=""> and
-				<input name="PerAdmitted2" value="">
-			<br> 
-			% Enrolled: between
-				<input name="PerEnrolled1" value=""> and
-				<input name="PerEnrolled2" value="">
-			<br> 
-			Academics Scale (1-5): between
-				<input name="AcademicsScale1" value=""> and
-				<input name="AcademicsScale2" value="">
-			<br> 
-			Social Scale (1-5): between
-				<input name="SocialScale1" value=""> and
-				<input name="SocialScale2" value="">
-			<br> 
-			Quality of Life Scale (1-5): between
-				<input name="QualityOfLifeScale1" value=""> and
-				<input name="QualityOfLifeScale2" value="">
-			<br> 
-			Emphases (Contains Either): 
-				<br>
-				<input name="Emphases1" value=""><br>
-				<input name="Emphases2" value=""><br>
-				<input name="Emphases3" value=""><br>
-				<input name="Emphases4" value=""><br>
-				<input name="Emphases5" value=""><br>
+<html>
+	<%@include file="/head.jsp"%>
+	<%@include file="/header.jsp"%>
+		<section id="content">
+			<div class="pane single">
+				<div class="name-bar">
+					<span>Search for Schools</span>
+				</div>
+				<div class="inner-content">
+					<p>Please enter each thingy dude</p>
+					<form method="post" action="search-action.jsp" name="SearchForSchools">
+						<dl class="input-holder">
+							<dt>School Name:</dt>
+								<dd><input type="text" name="SchoolName" value=""></dd><br>
+							<dt>State:</dt>
+								<dd><input type="text" name="State" value=""></dd><br>
+							<dt>Location:</dt>
+								<dd><input type="radio" name="Location" value="SUBURBAN"> Suburban&nbsp;
+								<input type="radio" name="Location" value="URBAN"> Urban&nbsp;
+								<input type="radio" name="Location" value="SMALL-CITY"> Small City&nbsp;
+								<input type="radio" name="Location" value="-1"> Unknown</dd><br>
+							<dt>Control:</dt>
+								<dd><input type="radio" name="Control" value="PRIVATE"> Private&nbsp;
+								<input type="radio" name="Control" value="STATE"> State&nbsp;
+								<input type="radio" name="Control" value="CITY"> City&nbsp;
+								<input type="radio" name="Control" value="-1"> Unknown</dd><br>
+							<dt>Number of Students:</dt>
+								<dd>from&nbsp;<input type="text" name="NumberOfStudents1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="NumberOfStudents2" value=""></dd><br>
+							<dt>% Female Students:</dt>
+								<dd>from&nbsp;<input type="text" name="PerFemale1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="PerFemale2" value=""></dd><br>
+							<dt>SAT Verbal:</dt>
+								<dd>from&nbsp;<input type="text" name="SATVerbal1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="SATVerbal2" value=""></dd><br>
+							<dt>SAT Math:</dt>
+								<dd>from&nbsp;<input type="text" name="SATMath1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="SATMath2" value=""></dd><br>
+							<dt>Expenses:</dt>
+								<dd>from&nbsp;<input type="text" name="Expenses1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="Expenses2" value=""></dd><br>
+							<dt>% Financial Aid:</dt>
+								<dd>from&nbsp;<input type="text" name="PerFinAid1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="PerFinAid2" value=""></dd><br>
+							<dt>Number of Applicants:</dt>
+								<dd>from&nbsp;<input type="text" name="NumOfApplicants1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="NumOfApplicants2" value=""></dd><br>
+							<dt>% Admitted:</dt>
+								<dd>from&nbsp;<input type="text" name="PerAdmitted1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="PerAdmitted2" value=""></dd><br>
+							<dt>% Enrolled:</dt>
+								<dd>from&nbsp;<input type="text" name="PerEnrolled1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="PerEnrolled2" value=""></dd><br>
+							<dt>Academics Scale (1-5):</dt>
+								<dd>from&nbsp;<input type="text" name="AcademicsScale1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="AcademicsScale2" value=""></dd><br>
+							<dt>Social Scale (1-5):</dt>
+								<dd>from&nbsp;<input type="text" name="SocialScale1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="SocialScale2" value=""></dd><br>
+							<dt>Quality of Life Scale (1-5):</dt>
+								<dd>from&nbsp;<input type="text" name="QualityOfLifeScale1" value=""></dd><br>
+								<dd>to&nbsp;<input type="text" name="QualityOfLifeScale2" value=""></dd><br>
+							<dt>Emphases:</dt>
+								<dd><input type="text" name="Emphases1" value=""></dd><br>
+								<dd><input type="text" name="Emphases2" value=""></dd><br>
+								<dd><input type="text" name="Emphases3" value=""></dd><br>
+								<dd><input type="text" name="Emphases4" value=""></dd><br>
+								<dd><input type="text" name="Emphases5" value=""></dd>
+						</dl>
+						<input name="Submit" value="Submit" type="submit"><br>
+						<input name="Reset" value="Reset" type="reset">
+					</form>
+				</div>
+			</div>
 			<br>
-				<input name="Submit" value="SUBMIT" type="submit"><br>
-				<input name="Reset" value="RESET" type="reset"><br>
-		</form>
+		</section>
 	</body>
 </html>
