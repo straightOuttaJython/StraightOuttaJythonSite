@@ -3,36 +3,31 @@
 <%@include file="/verify-login.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>School Search</title>
-	</head>
 	<%
-					try {
-						int errorNum =Integer.parseInt(request.getParameter("Error"));
-						if(errorNum != 0) {
-							if(errorNum == 1) {
-								out.println("	There was a problem with one of the numbers you entered, try again.");
-							} else if(errorNum == 2) {
-								out.println("	There was something wrong with one of the search terms that you entered, try again.");
-							} else if(errorNum == 3) {
-								out.println("	One of your search terms was not set properly, try again.");
-							}
-							%>
-							<br>
-							<br>
-							<%
-						}
-						session.setAttribute("Login Error", -1);
-					} catch (NullPointerException npe) {
-						
-					} catch (NumberFormatException nfe) {
-						
-					}
-					session.setAttribute("SearchError", 0);
+		try {
+			int errorNum =Integer.parseInt(request.getParameter("Error"));
+			if(errorNum != 0) {
+				if(errorNum == 1) {
+					out.println("	There was a problem with one of the numbers you entered, try again.");
+				} else if(errorNum == 2) {
+					out.println("	There was something wrong with one of the search terms that you entered, try again.");
+				} else if(errorNum == 3) {
+					out.println("	One of your search terms was not set properly, try again.");
+				}
 				%>
-	<body>
-		<!-- MATT: This is the entry form for a search. Directs input to search-action.jsp. -->
+				<br>
+				<br>
+				<%
+			}
+			session.setAttribute("Login Error", -1);
+		} catch (NullPointerException npe) {
+			
+		} catch (NumberFormatException nfe) {
+			
+		}
+		session.setAttribute("SearchError", 0);
+	%>
+	<%@include file="head-and-header.html" %>
 		Search Menu
 		<br> 
 		<form method="post" action="search-action.jsp" name="SearchForSchools">
