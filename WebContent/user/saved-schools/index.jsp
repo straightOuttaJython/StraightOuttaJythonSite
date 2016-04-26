@@ -3,7 +3,7 @@
 <%@include file="/verify-login.jsp"%>
 <%	
 	UserUI ui = (UserUI) session.getAttribute("UI");
-	School[] schools = ui.manageSchools();
+	String[] schools = ui.manageSchools();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,10 +21,9 @@ to remove-school-action.jsp.-->
 <table border="2" style="width: 481px; height: 65px; ">
      <tbody>
       <% if (schools!=null) {
-      		for(int r = 0;r<=schools.length;r++) { %>
+      		for (String schoolName : schools) { %>
          <tr>
 <td>
-<%String schoolName = schools[r].getName();%>
 <form method="post" action="remove-school-action.jsp">
 	<input type="hidden" name="school" value="<%=schoolName%>">
 	<input value="Remove" type="submit"> 
@@ -33,14 +32,13 @@ to remove-school-action.jsp.-->
 <td>
 <%=schoolName%></td>
 <td>
-<form method="post" action="view-school.jsp">
+<form method="post" action="../view-school.jsp">
 	<input type="hidden" name="school" value="<%=schoolName%>">
 	<input value="View" type="submit"> 
 </form></td>
          </tr>
          <% } 
-         }
-         	%>
+         } %>
      </tbody>
  </table>
 </body>

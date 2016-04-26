@@ -13,10 +13,10 @@ This is the Manage Profile page.
 it should direct to profile-edit-action.jsp.-->
 <%
 	String myErrors = request.getParameter("Error");
-	if (myErrors!=null && myErrors.equals("type"))
-		out.println("Type should be only either 'a' or 'u'!");
-	else if(myErrors!=null && myErrors.equals("type")){
-		out.println("Invalid User");
+	if (myErrors!=null && myErrors.equals("-1"))
+		out.println("UserUI was missing");
+	else if(myErrors!=null && myErrors.equals("-2")){
+		out.println("NullPointerException");
 	}
 	UserUI ui = (UserUI) session.getAttribute("UI");
 	Person user = ui.getUser();

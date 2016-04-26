@@ -8,7 +8,7 @@
 <%@include file="/head.jsp"%>
 <%@include file="/header.jsp"%>
 <section id="content">
-	<div class="main-menu" id="greeting">Welcome, <%=ui.getUser()%>!</div>
+	<div class="main-menu" id="greeting">Welcome, <%=ui.getUser().getFirstName()%>!</div>
 	<a href="<%=request.getContextPath()%>/user/search/index.jsp" class="main-menu option">Search for Schools</a
 	><a href="<%=request.getContextPath()%>/user/saved-schools/index.jsp" class="main-menu option">Manage Schools</a
 	><a href="<%=request.getContextPath()%>/user/manage-profile/index.jsp" class="main-menu option">Manage Profile</a>
