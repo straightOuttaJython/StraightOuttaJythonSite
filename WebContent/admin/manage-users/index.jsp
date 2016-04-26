@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import= "cmc.entity.*"%>
 	
 <%	
-	AdminUI aUI = new AdminUI();
+	AdminUI aUI = (AdminUI) session.getAttribute("UI");
 	PersonHome ph = new PersonHome();
 	Person p = new Person();
 %>

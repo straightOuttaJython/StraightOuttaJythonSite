@@ -18,7 +18,7 @@ it should direct to profile-edit-action.jsp.-->
 	else if(myErrors!=null && myErrors.equals("type")){
 		out.println("Invalid User");
 	}
-	UserUI ui = (UserUI) session.getAttribute("UserUI");
+	UserUI ui = (UserUI) session.getAttribute("UI");
 	Person user = ui.getUser();
 %>
  

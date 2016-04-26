@@ -15,7 +15,7 @@ This is where you make the actual call to edit a user-->
 	String userName = request.getParameter("Username");
 	String password = request.getParameter("Password");
 	char type = request.getParameter("Type").charAt(0);
-	UserUI ui = (UserUI) session.getAttribute("UserUI");
+	UserUI ui = (UserUI) session.getAttribute("UI");
 	if(type!='a' && type!='u')
 		response.sendRedirect("index.jsp?Error=type");
 	else if(ui==null){

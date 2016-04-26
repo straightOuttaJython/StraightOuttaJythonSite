@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*" %>
     
     <%
-    AdminUI aui = (AdminUI)session.getAttribute("Admin UI"); 
+    AdminUI aui = (AdminUI)session.getAttribute("UI"); 
     String school = request.getParameter("school");
     School s = (School)aui.getSchool(school);
     %>
