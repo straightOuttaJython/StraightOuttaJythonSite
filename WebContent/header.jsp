@@ -26,6 +26,6 @@
 			}
 		%>
 		</div>
-		<a href="">Logout</a>
+		<a href="<%=request.getContextPath()%>/logout-action.jsp">Logout</a>
 	</div
 ></header>
