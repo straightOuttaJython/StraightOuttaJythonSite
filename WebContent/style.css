@@ -126,7 +126,7 @@ body {
 .pane.multi input[type="submit"] {
   margin-top: .75em;
 }
-.pane.multi input[type="submit"][value="View"] {
+.pane.multi input[type="submit"][value="View"],input[type="submit"][value="Deactivate"] {
   float: left;
 }
 .pane.multi dl {
@@ -189,7 +189,7 @@ dd {
   font-size: 28px;
 }
 .add-button:hover {
-  width: 17em;
+  width: 25em;
   margin: 4em 1.5em 2em 1.5em;
 }
 .whitebox {
@@ -245,7 +245,7 @@ input {
   transition: all .3s;
 }
 input[type="submit"],input[type="reset"] {
-  width: 25%;
+  min-width: 25%;
   float: right;
   background-color: #1A2775;
   color: #F4F4F4;
