@@ -5,7 +5,10 @@
     <%@include file="/head.jsp"%>
     <body>
     <section id="content" class="login">
-        <%
+        <div id="login">
+            <img src="<%=request.getContextPath()%>/images/CMCLogoLogin.png"><br>
+            <div class="pane">
+            <p><%
             try {
                 int errorNum =Integer.parseInt(request.getParameter("Error"));
                 if(errorNum != 0) {
@@ -16,17 +19,14 @@
                     } else if(errorNum == 3) {
                         out.println("   Invalid username or password");
                     }else if(errorNum == -4) {
-                        out.println("   You need to LOG-IN!");
+                        out.println("   You need to log in!");
                     }
                 }
                 session.setAttribute("Login Error", -1);
             } catch (NumberFormatException npe) {
                
             }
-        %>
-        <div id="login">
-            <img src="<%=request.getContextPath()%>/images/CMCLogoLogin.png"><br>
-            <div class="pane">
+        %></p>
             <form method="post" action="login-action.jsp" name="Login">
                 <dl>
                     <dt>Username:</dt>

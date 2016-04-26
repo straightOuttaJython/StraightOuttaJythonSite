@@ -238,10 +238,6 @@ form input:focus {
 form dl {
   width: 75%;
 }
-form dl dd {
-  position: absolute;
-  left: 30%;
-}
 input {
   padding: 0 .25em 0 .25em;
   border: none;
