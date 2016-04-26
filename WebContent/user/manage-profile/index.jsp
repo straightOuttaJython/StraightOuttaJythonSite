@@ -18,14 +18,16 @@ it should direct to profile-edit-action.jsp.-->
 	else if(myErrors!=null && myErrors.equals("type")){
 		out.println("Invalid User");
 	}
+	UserUI ui = (UserUI) session.getAttribute("UserUI");
+	Person user = ui.getUser();
 %>
  
 <form method="post" action="profile-edit-action.jsp">
-	First Name <input name="FirstName"><br>
-	Last Name <input name="LastName"><br>
-	Username <input name="Username"><br>
-	Password <input name="Password"><br>
-	Type <input name="Type"><br>
+	First Name <input name="FirstName" value="<%=user.getFirstName()%>"><br>
+	Last Name <input name="LastName" value="<%=user.getLastName()%>"><br>
+	Username <input name="Username" value="<%=user.getUsername()%>" readonly><br>
+	Password <input name="Password" value="<%=user.getPassword()%>"><br>
+	Type <input name="Type" value="<%=user.getType()%>" readonly><br>
 	<input value="Edit User" type="submit"> 
     <input value="Reset" type="reset"><br>
 </form>

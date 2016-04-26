@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import="cmc.entity.*"%>
-
+<%@include file="/verify-login.jsp"%>
 <%	
 	UserUI ui = (UserUI) session.getAttribute("UserUI");
 	School[] schools = ui.manageSchools();
-	int len = schools.length;
 %>
-
-  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +20,8 @@ to remove-school-action.jsp.-->
 
 <table border="2" style="width: 481px; height: 65px; ">
      <tbody>
-      <% for(int r = 0;r<=len;r++) { %>
+      <% if (schools!=null) {
+      		for(int r = 0;r<=schools.length;r++) { %>
          <tr>
 <td>
 <%String schoolName = schools[r].getName();%>
@@ -40,7 +38,9 @@ to remove-school-action.jsp.-->
 	<input value="View" type="submit"> 
 </form></td>
          </tr>
-         <% } %>
+         <% } 
+         }
+         	%>
      </tbody>
  </table>
 </body>
