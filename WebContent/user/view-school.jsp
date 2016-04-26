@@ -30,7 +30,7 @@
 		<table>
 			<tr>
 			<td>School</td>
-			<td><%=school.getName()%></td>
+			<td><%=schoolName%></td>
 			</tr>
 			<tr>
 			<td>State</td>
@@ -99,8 +99,37 @@
 			<td><%=quality%></td>
 			</tr>
 		</table>
-		<table>
-			<% out.println("Recommended Schools -- "); %>
-		</table>
-	</body>
+<%
+	School[] recSchools = ui.getRecommendations(school);
+	if (recSchools.length > 0) {
+		for (School recSchool : recSchools) {
+%>
+	<div class="pane multi">
+		<div class="name-bar"><%=recSchool.getName()%></div>
+		<div class="inner-content">
+			<dl>
+				<dt>State</dt>
+							<dd><%=recSchool.getState()%></dd>
+				<dt>Location</dt>
+							<dd><%=recSchool.getLocation()%></dd>
+				<dt>Control</dt>
+								<dd><%=recSchool.getControl()%></dd>
+				<dt>Number of Students</dt>
+								<dd><%=recSchool.getNumStudentsEnrolled()%></dd>
+				<form action="search/save-school-action.jsp">
+					<input type="hidden" name="school" value="<%=recSchool.getName()%>"></input>
+					<input type="submit" value="Save"></input>
+				</form>
+				<form action="view-school.jsp">
+					<input type="hidden" name="school" value="<%=recSchool.getName()%>"></input>
+					<input type="submit" value="View"></input>
+				</form>
+			</dl>
+		</div>
+	</div>
+		<%
+		}
+	}
+%>
+</body>
 </html>
