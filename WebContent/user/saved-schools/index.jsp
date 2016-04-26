@@ -3,45 +3,39 @@
 <%@include file="/verify-login.jsp"%>
 <%	
 	UserUI ui = (UserUI) session.getAttribute("UI");
-	School[] schools = ui.manageSchools();
+	String[] schools = ui.manageSchools();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Saved school</title>
-</head>
-<body>
-<!-- DUONG
-This is the Manage Saved Schools page. The view button should direct
-to ../view-school.jsp and the remove button should direct 
-to remove-school-action.jsp.-->
-
-
-<table border="2" style="width: 481px; height: 65px; ">
-     <tbody>
-      <% if (schools!=null) {
-      		for(int r = 0;r<=schools.length;r++) { %>
-         <tr>
-<td>
-<%String schoolName = schools[r].getName();%>
-<form method="post" action="remove-school-action.jsp">
-	<input type="hidden" name="school" value="<%=schoolName%>">
-	<input value="Remove" type="submit"> 
-</form></td>
-
-<td>
-<%=schoolName%></td>
-<td>
-<form method="post" action="view-school.jsp">
-	<input type="hidden" name="school" value="<%=schoolName%>">
-	<input value="View" type="submit"> 
-</form></td>
-         </tr>
-         <% } 
-         }
-         	%>
-     </tbody>
- </table>
-</body>
-</html>
+<%@include file="/head.jsp"%>
+<%@include file="/header.jsp"%>
+<section id="content">
+	<%	if (schools!=null) {
+    	for (String schoolName : schools) { 
+    	School school = ui.getSchool(schoolName); %>
+	<div class="pane multi">
+		<div class="name-bar"><%=school.getName()%></div>
+		<div class="inner-content">
+			<dl>
+				<dt>State</dt>
+							<dd><%=school.getState()%></dd>
+				<dt>Location</dt>
+							<dd><%=school.getLocation()%></dd>
+				<dt>Control</dt>
+								<dd><%=school.getControl()%></dd>
+				<dt>Number of Students</dt>
+								<dd><%=school.getNumStudentsEnrolled()%></dd>
+				<form method="post" action="remove-school-action.jsp">
+					<input type="hidden" name="school" value="<%=schoolName%>">
+					<input value="Remove" type="submit"> 
+				</form>
+				<form action="../view-school.jsp">
+					<input type="hidden" name="school" value="<%=school.getName()%>"></input>
+					<input type="submit" value="View"></input>
+				</form>
+			</dl>
+		</div>
+	</div>
+	<% }
+	} %>
+</section>
