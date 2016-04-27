@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	AdminUI auiii = (AdminUI)session.getAttribute("AdminUI");
+	AdminUI aui = (AdminUI)session.getAttribute("UI");
 	if(request.getParameter("School").equals("")|| 
 			request.getParameter("State").equals("") || 
 			request.getParameter("Location").equals("")|| 
@@ -30,9 +30,9 @@
 	}
 	else
 	{
-	String[] listEmp = auiii.getEmph(request.getParameter("School"));
+	String[] listEmp = aui.getEmph(request.getParameter("School"));
 	
-	auiii.editSchool(request.getParameter("School"),request.getParameter("State"),
+	aui.editSchool(request.getParameter("School"),request.getParameter("State"),
 					  request.getParameter("Location"), request.getParameter("Control"),
 					  Integer.parseInt(request.getParameter("NumStudents")), 
 					  Double.parseDouble(request.getParameter("PercFemal")), 
@@ -48,19 +48,19 @@
 					  Integer.parseInt(request.getParameter("qualScale"))
 			);
 	
-	auiii.removeSchoolEmph(request.getParameter("School"),listEmp[0]);
-	auiii.removeSchoolEmph(request.getParameter("School"),listEmp[1]);
-	auiii.removeSchoolEmph(request.getParameter("School"),listEmp[2]);
-	auiii.removeSchoolEmph(request.getParameter("School"),listEmp[3]);
-	auiii.removeSchoolEmph(request.getParameter("School"),listEmp[4]);
+	aui.removeSchoolEmph(request.getParameter("School"),listEmp[0]);
+	aui.removeSchoolEmph(request.getParameter("School"),listEmp[1]);
+	aui.removeSchoolEmph(request.getParameter("School"),listEmp[2]);
+	aui.removeSchoolEmph(request.getParameter("School"),listEmp[3]);
+	aui.removeSchoolEmph(request.getParameter("School"),listEmp[4]);
 	
-	auiii.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
-	auiii.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
-	auiii.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
-	auiii.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
-	auiii.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
+	aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
+	aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
+	aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
+	aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
+	aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
 	
-	String[] list = auiii.getEmph(request.getParameter("School"));
+	String[] list = aui.getEmph(request.getParameter("School"));
 	//Remove the emphasis from that page then add the new one
 	response.sendRedirect("index.jsp");
 	}
