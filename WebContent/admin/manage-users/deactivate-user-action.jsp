@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import = "cmc.ui.*"%>
+<%@include file="/verify-login.jsp"%>
 <%
 	String username = request.getParameter("Username");
 	AdminUI aui = (AdminUI) session.getAttribute("UI");

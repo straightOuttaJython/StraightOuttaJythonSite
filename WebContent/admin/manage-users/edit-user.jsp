@@ -1,21 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import= "cmc.entity.*"%>
-	
-<%PersonHome pph = new PersonHome(); 
-String username = request.getParameter("Username");
-Person p = (Person)pph.getPerson(username);
-
-try 
-{
-	int error = Integer.parseInt(request.getParameter("Error"));
-		if(error != 0) 
-	{
-		out.println("Please do not leave anything blank!");
-	}
-} 
-catch (NumberFormatException npe) {	
-
-}
+<%@include file="/verify-login.jsp"%>	
+<%
+	AdminUI aui = (AdminUI)session.getAttribute("UI");
+	String username = request.getParameter("Username");
+	Person p = aui.getPerson(username);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,7 +15,13 @@ catch (NumberFormatException npe) {
 		<div class="name-bar">
 			<span><%="Edit user for "+p.getFirstName()+" "+p.getPassword()%></span>
 		</div>
-		<div class="inner-content"> 
+		<div class="inner-content">
+			<p><%
+				String error = request.getParameter("Error");
+				if(error!=null && error.equals("1")) {
+					out.println("Please do not leave anything blank!");
+				}
+			%></p>
 			<form method="post" action="edit-user-action.jsp">
 				<dl>
 					<dt>First Name:</dt>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import= "cmc.entity.*"%>
+<%@include file="/verify-login.jsp"%>
 	
 <%	
 	AdminUI aUI = (AdminUI) session.getAttribute("UI");
@@ -19,17 +20,17 @@
 		<div class="inner-content">
 			<dl>
 				<dt>First Name</dt>
-							<dd><%=p.getFirstName()%></dd>
+							<dd><%=p.getFirstName()%></dd><br>
 				<dt>Last Name</dt>
-							<dd><%=p.getLastName()%></dd>
+							<dd><%=p.getLastName()%></dd><br>
 				<dt>Username</dt>
-							<dd><%=p.getUsername()%></dd>
+							<dd><%=p.getUsername()%></dd><br>
 				<dt>Password</dt>
-							<dd><%=p.getPassword()%></dd>
+							<dd><%=p.getPassword()%></dd><br>
 				<dt>Type</dt>
-							<dd><%=p.getType()=='u' ? "User" : "Admin"%></dd>
+							<dd><%=p.getType()=='u' ? "User" : "Admin"%></dd><br>
 				<dt>Status</dt>
-							<dd><%=p.getStatus()=='Y' ? "Active" : "Inactive"%></dd>
+							<dd><%=p.getStatus()=='Y' ? "Active" : "Inactive"%></dd><br>
 				<form method="post" action="edit-user.jsp">
 					<input type="hidden" name="Username" value="<%=p.getUsername()%>">
 					<input value="Edit" type="submit">

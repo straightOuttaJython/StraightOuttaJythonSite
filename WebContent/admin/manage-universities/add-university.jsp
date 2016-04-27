@@ -1,162 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add University</title>
-</head>
-<body>
-
+<%@include file="/verify-login.jsp"%>
 <%
-try 
-{
-	int error = Integer.parseInt(request.getParameter("Error"));
-		if(error != 0) 
-	{
+	String error = request.getParameter("Error");
+	if(error!=null && error.equals("1")) {
 		out.println("Please do not leave anything blank!");
 	}
-} 
-catch (NumberFormatException npe) {	
-
-}
-	
 %>
-	<form method="post" action="add-university-action.jsp" name="editUser">
-		<br>
-		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2">
-			<tbody>
-				<tr>
-					<td style="vertical-align: top;">School<br>
-					</td>
-					<td style="vertical-align: top;"><input name="School"
-						value=""><br></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">State<br>
-					</td>
-					<td style="vertical-align: top;"><input name="State"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Location<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Location"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Control<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Control"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Number of Students<br>
-					</td>
-					<td style="vertical-align: top;"><input name="NumStudents"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">% Female<br>
-					</td>
-					<td style="vertical-align: top;"><input name="PercFemal"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">SAT Verbal<br>
-					</td>
-					<td style="vertical-align: top;"><input name="SATVerbal"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">SAT Math<br>
-					</td>
-					<td style="vertical-align: top;"><input name="SATMath"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Expense<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Expenses"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Fin Aid<br>
-					</td>
-					<td style="vertical-align: top;"><input name="finAid"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Number Of Applicants<br>
-					</td>
-					<td style="vertical-align: top;"><input name="numApps"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Admitted <br>
-					</td>
-					<td style="vertical-align: top;"><input name="percAdd"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Enrolled<br>
-					</td>
-					<td style="vertical-align: top;"><input name="percEnrolled"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Academic Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="acaScale"
-						value=""></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Social Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="socScale"
-						value=""></td>
-				</tr>
-					
-				<tr>
-					<td style="vertical-align: top;">Quality of Life Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="qualScale"
-						value=""></td>
-				</tr>
-				
-				<tr>
-				<td style="vertical-align: top;">Emphases<br>
-				</td>
-				<td style="vertical-align: top;">
-						<input name="Emphases1" value="">
-						<input name="Emphases2" value="">
-						<input name="Emphases3" value="">
-						<input name="Emphases4" value="">
-						<input name="Emphases5" value="">
-				</td>
-
-
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;"><input value="Add School"
-						name="Apply Changes" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td style="vertical-align: top;"><input value="Reset"
-						name="Reset" type="reset"></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<%@include file="/head.jsp"%>
+<%@include file="/header.jsp"%>
+<section id="content">
+	<div class="pane single">
+		<div class="name-bar">
+			<span>Add New University</span>
+		</div>
+		<div class="inner-content"> 
+			<form method="post" action="add-university-action.jsp">
+				<dl>
+							<dt>School Name:</dt>
+								<dd><input type="text" name="School"></dd><br>
+							<dt>State:</dt>
+								<dd><input type="text" name="State"></dd><br>
+							<dt>Location:</dt>
+								<dd><input type="radio" name="Location" value="SUBURBAN" > Suburban&nbsp;
+								<input type="radio" name="Location" value="URBAN" > Urban&nbsp;
+								<input type="radio" name="Location" value="SMALL-CITY" > Small City&nbsp;
+								<input type="radio" name="Location" value="-1" > Unknown
+								<input type="hidden" name="Location" value=""></dd><br>
+							<dt>Control:</dt>
+								<dd><input type="radio" name="Control" value="PRIVATE" > Private&nbsp;
+								<input type="radio" name="Control" value="STATE" > State&nbsp;
+								<input type="radio" name="Control" value="CITY" > City&nbsp;
+								<input type="radio" name="Control" value="-1" > Unknown
+								<input type="hidden" name="Control" value=""></dd><br>
+							<dt>Number of Students:</dt>
+								<dd><input type="text" name="NumStudents"></dd><br>
+							<dt>% Female Students:</dt>
+								<dd><input type="text" name="PercFemal"></dd><br>
+							<dt>SAT Verbal:</dt>
+								<dd><input type="text" name="SATVerbal"></dd><br>
+							<dt>SAT Math:</dt>
+								<dd><input type="text" name="SATMath"></dd><br>
+							<dt>Expenses:</dt>
+								<dd><input type="text" name="Expenses"></dd><br>
+							<dt>% Financial Aid:</dt>
+								<dd><input type="text" name="finAid"></dd><br>
+							<dt>Number of Applicants:</dt>
+								<dd><input type="text" name="numApps"></dd><br>
+							<dt>% Admitted:</dt>
+								<dd><input type="text" name="percAdd"></dd><br>
+							<dt>% Enrolled:</dt>
+								<dd><input type="text" name="percEnrolled"></dd><br>
+							<dt>Academics Scale (1-5):</dt>
+								<dd><input type="text" name="acaScale"></dd><br>
+							<dt>Social Scale (1-5):</dt>
+								<dd><input type="text" name="socScale"></dd><br>
+							<dt>Quality of Life Scale (1-5):</dt>
+								<dd><input type="text" name="qualScale"></dd><br>
+							<dt>Emphases:</dt>
+								<dd><input type="text" name="Emphases1"></dd><br>
+								<dd><input type="text" name="Emphases2"></dd><br>
+								<dd><input type="text" name="Emphases3"></dd><br>
+								<dd><input type="text" name="Emphases4"></dd><br>
+								<dd><input type="text" name="Emphases5"></dd>
+						</dl>
+				<input value="Save University" type="submit"><br>
+				<input value="Reset" type="reset">
+			</form>
+		</div>
+	</div>
+</section>
 </body>
 </html>

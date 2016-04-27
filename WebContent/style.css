@@ -140,12 +140,10 @@ body {
   width: 100%;
 }
 .pane.multi dl dd {
-  width: 45%;
   max-height: 1.35em;
   overflow: hidden;
 }
 .pane.multi dl dt {
-  width: 55%;
   max-height: 1.35em;
   overflow: hidden;
 }

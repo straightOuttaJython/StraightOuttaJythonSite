@@ -1,3 +1,4 @@
+<%@include file="/verify-login.jsp"%>
 <%@ page import="cmc.entity.*" %>
 <%@ page import="cmc.ui.*" %>
 <%

@@ -33,7 +33,7 @@
 	%>
 	</p>
 					<form method="post" action="search-action.jsp" name="SearchForSchools">
-						<dl class="input-holder">
+						<dl>
 							<dt>School Name:</dt>
 								<dd><input type="text" name="SchoolName" value=""></dd><br>
 							<dt>State:</dt>

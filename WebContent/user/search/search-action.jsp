@@ -1,6 +1,4 @@
-<!-- MATT
-Don't forget to catch all the tricky exceptions.
-This page redirects to results.jsp. -->
+<%@include file="/verify-login.jsp"%>
 <%@ page import="cmc.ui.*"%>
 <%@ page import="cmc.entity.*"%>
 <%

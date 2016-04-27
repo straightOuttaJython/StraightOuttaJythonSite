@@ -1,35 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="cmc.ui.*"%>
+<%@include file="/verify-login.jsp"%>
     
-    <%
+<%
 	AdminUI aui = (AdminUI)session.getAttribute("UI");
-	if(request.getParameter("School").equals("")|| 
-			request.getParameter("State").equals("") || 
-			request.getParameter("Location").equals("")|| 
-			request.getParameter("Control").equals("") ||
-		  request.getParameter("NumStudents").equals("") ||  
-	  	request.getParameter("PercFemal").equals("") ||
-	  	request.getParameter("SATVerbal").equals("") ||
-	 	 request.getParameter("SATMath").equals("") ||
-	 	 request.getParameter("Expenses").equals("") ||
-	  	request.getParameter("finAid").equals("") ||
-	  	request.getParameter("numApps").equals("") ||
-	  	request.getParameter("percAdd").equals("") ||
-	  	request.getParameter("percEnrolled").equals("") ||
-	  	request.getParameter("acaScale").equals("") ||
-	  	request.getParameter("socScale").equals("") ||
-	  	request.getParameter("qualScale").equals("") ||
-		request.getParameter("Emphases1").equals("") ||
-		request.getParameter("Emphases2").equals("") ||
-		request.getParameter("Emphases3").equals("") ||
-		request.getParameter("Emphases4").equals("") ||
-		request.getParameter("Emphases5").equals(""))
-	{
-		response.sendRedirect("add-university.jsp?Error=1");
+	String schoolName = request.getParameter("School");
+	String state = request.getParameter("State");
+	String location = request.getParameter("Location");
+	String control = request.getParameter("Control");
+	String numStudents = request.getParameter("NumStudents");
+	String percFemal = request.getParameter("PercFemal");
+	String sATVerbal = request.getParameter("SATVerbal");
+	String sATMath = request.getParameter("SATMath");
+	String expenses = request.getParameter("Expenses");
+	String finAid = request.getParameter("finAid");
+	String numApps = request.getParameter("numApps");
+	String percAdd = request.getParameter("percAdd");
+	String percEnrolled = request.getParameter("percEnrolled");
+	String acaScale = request.getParameter("acaScale");
+	String socScale = request.getParameter("socScale");
+	String qualScale = request.getParameter("qualScale");
+	String emphases1 = request.getParameter("Emphases1");
+	String emphases2 = request.getParameter("Emphases2");
+	String emphases3 = request.getParameter("Emphases3");
+	String emphases4 = request.getParameter("Emphases4");
+	String emphases5 = request.getParameter("Emphases5");
+
+	if( schoolName.equals("")|| 
+		state.equals("") || 
+		location.equals("")|| 
+		control.equals("") ||
+		numStudents.equals("") ||  
+		percFemal.equals("") ||
+		sATVerbal.equals("") ||
+		sATMath.equals("") ||
+		expenses.equals("") ||
+		finAid.equals("") ||
+		numApps.equals("") ||
+		percAdd.equals("") ||
+		percEnrolled.equals("") ||
+		acaScale.equals("") ||
+		socScale.equals("") ||
+		qualScale.equals("")) {
+		response.sendRedirect("edit-university.jsp?Error=1&school="+request.getParameter("School"));
 	}
 	else
 	{
-    aui.editSchool(request.getParameter("School"),request.getParameter("State"),
+	String[] listEmp = aui.getEmph(schoolName); 
+	aui.addSchool(request.getParameter("School"),request.getParameter("State"),
 					  request.getParameter("Location"), request.getParameter("Control"),
 					  Integer.parseInt(request.getParameter("NumStudents")), 
 					  Double.parseDouble(request.getParameter("PercFemal")), 
@@ -44,16 +62,21 @@
 					  Integer.parseInt(request.getParameter("socScale")),
 					  Integer.parseInt(request.getParameter("qualScale"))
 			);
-    
-    aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
-    aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
-    aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
-    aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
-    aui.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
-	//Remove the emphasis from that page then add the new one
+	
+	aui.removeSchoolEmph(schoolName,listEmp[0]);
+	aui.removeSchoolEmph(schoolName,listEmp[1]);
+	aui.removeSchoolEmph(schoolName,listEmp[2]);
+	aui.removeSchoolEmph(schoolName,listEmp[3]);
+	aui.removeSchoolEmph(schoolName,listEmp[4]);
+	
+	aui.addSchoolEmph(schoolName,emphases1);
+	aui.addSchoolEmph(schoolName,emphases2);
+	aui.addSchoolEmph(schoolName,emphases3);
+	aui.addSchoolEmph(schoolName,emphases4);
+	aui.addSchoolEmph(schoolName,emphases5);
 	response.sendRedirect("index.jsp");
 	}
-   %>
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

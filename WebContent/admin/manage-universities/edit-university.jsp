@@ -1,175 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*" %>
-    
-    
-    <%
+<%@include file="/verify-login.jsp"%>
+<%
     AdminUI aui = (AdminUI)session.getAttribute("UI"); 
     String school = request.getParameter("school");
     School s = (School)aui.getSchool(school);
-    
-    %>
-    <%
-	try 
-	{
-		int error = Integer.parseInt(request.getParameter("Error"));
-   		if(error != 0) 
-    	{
-    		out.println("Please do not leave anything blank!");
-    	}
-	} 
-	catch (NumberFormatException npe) {	
-   
+    String[] emphases = aui.getEmph(school);
+%>
+<%
+	String error = request.getParameter("Error");
+	if(error!=null && error.equals("1")) {
+		out.println("Please do not leave anything blank!");
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit University</title>
-</head>
-<body>
-		<form method="post" action="edit-university-action.jsp" name="editUser">
-		<br>
-		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2">
-			<tbody>
-				<tr>
-					<td style="vertical-align: top;">School<br>
-					</td>
-					<td style="vertical-align: top;"><input name="School"
-						value="<%=s.getName()%>"><br></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">State<br>
-					</td>
-					<td style="vertical-align: top;"><input name="State"
-						value="<%=s.getState()%>"></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Location<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Location"
-						value="<%=s.getLocation()%>"></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Control<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Control"
-						value="<%=s.getControl()%>"></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Number of Students<br>
-					</td>
-					<td style="vertical-align: top;"><input name="NumStudents"
-						value="<%=s.getNumStudentsEnrolled()%>"></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">% Female<br>
-					</td>
-					<td style="vertical-align: top;"><input name="PercFemal"
-						value="<%=s.getPercentFemEnrolled()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">SAT Verbal<br>
-					</td>
-					<td style="vertical-align: top;"><input name="SATVerbal"
-						value="<%=s.getSatVerb()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">SAT Math<br>
-					</td>
-					<td style="vertical-align: top;"><input name="SATMath"
-						value="<%=s.getSatMath()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Expense<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Expenses"
-						value="<%=s.getTuition()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Fin Aid<br>
-					</td>
-					<td style="vertical-align: top;"><input name="finAid"
-						value="<%=s.getPercFinAid()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Number Of Applicants<br>
-					</td>
-					<td style="vertical-align: top;"><input name="numApps"
-						value="<%=s.getNumApplications()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Admitted <br>
-					</td>
-					<td style="vertical-align: top;"><input name="percAdd"
-						value="<%=s.getAdmitRate()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">% Enrolled<br>
-					</td>
-					<td style="vertical-align: top;"><input name="percEnrolled"
-						value="<%=s.getDecideRate()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Academic Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="acaScale"
-						value="<%=s.getAcademics()%>"></td>
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">Social Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="socScale"
-						value="<%=s.getSocialLife()%>"></td>
-				</tr>
-					
-				<tr>
-					<td style="vertical-align: top;">Quality of Life Scale (1-5)<br>
-					</td>
-					<td style="vertical-align: top;"><input name="qualScale"
-						value="<%=s.getQualityLife()%>"></td>
-				</tr>
-				
-				<tr>
-				<td style="vertical-align: top;">Emphases<br>
-				</td>
-				<td style="vertical-align: top;">
-				<%
-					String[] ll = aui.getEmph(s.getName());
-				%>
-						<input name="Emphases1" value="<%=ll[0]%>">
-						<input name="Emphases2" value="<%=ll[1]%>">
-						<input name="Emphases3" value="<%=ll[2]%>">
-						<input name="Emphases4" value="<%=ll[3]%>">
-						<input name="Emphases5" value="<%=ll[4]%>">
-				</td>
-
-
-				</tr>
-				
-				<tr>
-					<td style="vertical-align: top;">
-					<input value="Apply Changes" name="Apply Changes" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					
-					<td style="vertical-align: top;">
-					<form method="post" action="index.jsp" name="editUser">
-					<input value="Cancel Changes" name="Cancel Changes" type="submit">
-					</form>
-					</td>
-					
-				</tr>
-			</tbody>
-		</table>
-	</form>
+<%@include file="/head.jsp"%>
+<%@include file="/header.jsp"%>
+<section id="content">
+	<div class="pane single">
+		<div class="name-bar">
+			<span>Editing <%=s.getName() %></span>
+		</div>
+		<div class="inner-content"> 
+			<form method="post" action="edit-university-action.jsp">
+				<dl>
+							<dt>School Name:</dt>
+								<dd><input type="text" name="School" value="<%=s.getName()%>"></dd><br>
+							<dt>State:</dt>
+								<dd><input type="text" name="State" value="<%=s.getState()%>"></dd><br>
+							<dt>Location:</dt>
+								<dd><input type="radio" name="Location" value="SUBURBAN" <%=s.getLocation().toUpperCase().equals("SUBURBAN") ? "checked" : ""%>> Suburban&nbsp;
+								<input type="radio" name="Location" value="URBAN" <%=s.getLocation().toUpperCase().equals("URBAN") ? "checked" : ""%>> Urban&nbsp;
+								<input type="radio" name="Location" value="SMALL-CITY" <%=s.getLocation().toUpperCase().equals("SMALL-CITY") ? "checked" : ""%>> Small City&nbsp;
+								<input type="radio" name="Location" value="-1" <%=s.getLocation().toUpperCase().equals("-1") ? "checked" : ""%>> Unknown
+								<input type="hidden" name="Location" value=""></dd><br>
+							<dt>Control:</dt>
+								<dd><input type="radio" name="Control" value="PRIVATE" <%=s.getControl().toUpperCase().equals("PRIVATE") ? "checked" : ""%>> Private&nbsp;
+								<input type="radio" name="Control" value="STATE" <%=s.getControl().toUpperCase().equals("STATE") ? "checked" : ""%>> State&nbsp;
+								<input type="radio" name="Control" value="CITY" <%=s.getControl().toUpperCase().equals("CITY") ? "checked" : ""%>> City&nbsp;
+								<input type="radio" name="Control" value="-1" <%=s.getControl().toUpperCase().equals("-1") ? "checked" : ""%>> Unknown
+								<input type="hidden" name="Control" value=""></dd><br>
+							<dt>Number of Students:</dt>
+								<dd><input type="text" name="NumStudents" value="<%=s.getNumStudentsEnrolled()%>"></dd><br>
+							<dt>% Female Students:</dt>
+								<dd><input type="text" name="PercFemal" value="<%=s.getPercentFemEnrolled()%>"></dd><br>
+							<dt>SAT Verbal:</dt>
+								<dd><input type="text" name="SATVerbal" value="<%=s.getSatVerb()%>"></dd><br>
+							<dt>SAT Math:</dt>
+								<dd><input type="text" name="SATMath" value="<%=s.getSatMath()%>"></dd><br>
+							<dt>Expenses:</dt>
+								<dd><input type="text" name="Expenses" value="<%=s.getTuition()%>"></dd><br>
+							<dt>% Financial Aid:</dt>
+								<dd><input type="text" name="finAid" value="<%=s.getPercFinAid()%>"></dd><br>
+							<dt>Number of Applicants:</dt>
+								<dd><input type="text" name="numApps" value="<%=s.getNumApplications()%>"></dd><br>
+							<dt>% Admitted:</dt>
+								<dd><input type="text" name="percAdd" value="<%=s.getAdmitRate()%>"></dd><br>
+							<dt>% Enrolled:</dt>
+								<dd><input type="text" name="percEnrolled" value="<%=s.getDecideRate()%>"></dd><br>
+							<dt>Academics Scale (1-5):</dt>
+								<dd><input type="text" name="acaScale" value="<%=s.getAcademics()%>"></dd><br>
+							<dt>Social Scale (1-5):</dt>
+								<dd><input type="text" name="socScale" value="<%=s.getSocialLife()%>"></dd><br>
+							<dt>Quality of Life Scale (1-5):</dt>
+								<dd><input type="text" name="qualScale" value="<%=s.getQualityLife()%>"></dd><br>
+							<dt>Emphases:</dt>
+								<dd><input type="text" name="Emphases1" value="<%=emphases[0]!=null ? emphases[0] : ""%>"></dd><br>
+								<dd><input type="text" name="Emphases2" value="<%=emphases[1]!=null ? emphases[1] : ""%>"></dd><br>
+								<dd><input type="text" name="Emphases3" value="<%=emphases[2]!=null ? emphases[2] : ""%>"></dd><br>
+								<dd><input type="text" name="Emphases4" value="<%=emphases[3]!=null ? emphases[3] : ""%>"></dd><br>
+								<dd><input type="text" name="Emphases5" value="<%=emphases[4]!=null ? emphases[4] : ""%>"></dd>
+						</dl>
+				<input value="Save University" type="submit"><br>
+				<input value="Reset" type="reset">
+			</form>
+		</div>
+	</div>
+</section>
 </body>
 </html>
