@@ -1,59 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="cmc.home.*"%>
+	pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import= "cmc.entity.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add User</title>
-</head>
-<body>
-
-<form method="post" action="add-user-action.jsp" name="editUser">
-		<br>
-		<table style="text-align: left; width: 266px; height: 228px;"
-			border="1" cellpadding="2" cellspacing="2">
-			<tbody>
-				<tr>
-					<td style="vertical-align: top;">First Name<br>
-					</td>
-					<td style="vertical-align: top;"><input name="FirstName"
-						value=""><br></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Last Name<br>
-					</td>
-					<td style="vertical-align: top;"><input name="LastName"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Username<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Username"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Password<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Password"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;">Type<br>
-					</td>
-					<td style="vertical-align: top;"><input name="Type"
-						value=""></td>
-				</tr>
-				<tr>
-					<td style="vertical-align: top;"><input value="Add"
-						name="Add" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td style="vertical-align: top;"><input value="Reset"
-						name="Reset" type="reset"></td>
-				</tr>
-			</tbody>
-		</table>
-		<br>
-	</form>
-
-
+<%@include file="/head.jsp"%>
+<%@include file="/header.jsp"%>
+<section id="content">
+	<div class="pane single">
+		<div class="name-bar">
+			<span>Add New User:</span>
+		</div>
+		<div class="inner-content"> 
+			<form method="post" action="add-user-action.jsp">
+				<dl>
+					<dt>First Name:</dt>
+						<dd><input name="FirstName"></dd><br>
+					<dt>Last Name:</dt>
+						<dd><input name="LastName"></dd><br>
+					<dt>Username:</dt>
+						<dd><input name="Username"></dd><br>
+					<dt>Password:</dt>
+						<dd><input name="Password"></dd><br>
+					<dt>Type:</dt>
+						<dd><input type="radio" name="Type" value="u"> User&nbsp;
+							<input type="radio" name="Type" value="a"> Admin</dd><br>
+					<dt>Status:</dt>
+						<dd><input type="checkbox" name="Status" value="Y" checked> Active
+							<input type="hidden" name="Status" value="N"></dd><br>
+				</dl>
+				<input value="Save User" type="submit"><br>
+				<input value="Reset" type="reset">
+			</form>
+		</div>
+	</div>
+</section>
 </body>
 </html>

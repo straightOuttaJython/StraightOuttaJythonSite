@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	PersonHome ph3 = (PersonHome)session.getAttribute("PersonHome");
+	PersonHome ph3 = new PersonHome();
 	ph3.addUser(request.getParameter("FirstName"),request.getParameter("LastName"),request.getParameter("Username"),
 			request.getParameter("Password"), request.getParameter("Type").charAt(0));
 	

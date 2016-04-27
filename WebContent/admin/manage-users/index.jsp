@@ -29,7 +29,7 @@
 				<dt>Type</dt>
 							<dd><%=p.getType()=='u' ? "User" : "Admin"%></dd>
 				<dt>Status</dt>
-							<dd><%=p.getStatus()=='y' ? "Active" : "Inactive"%></dd>
+							<dd><%=p.getStatus()=='Y' ? "Active" : "Inactive"%></dd>
 				<form method="post" action="edit-user.jsp">
 					<input type="hidden" name="Username" value="<%=p.getUsername()%>">
 					<input value="Edit" type="submit">

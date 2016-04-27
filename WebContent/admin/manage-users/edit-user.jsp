@@ -9,31 +9,33 @@ Person p = (Person)pph.getPerson(username);%>
 <%@include file="/head.jsp"%>
 <%@include file="/header.jsp"%>
 <section id="content">
-		<div class="pane single">
-			<div class="name-bar">
-				<span><%="Edit user for "+p.getFirstName()+" "+p.getPassword()%></span>
-			</div>
-			<div class="inner-content"> 
-				<form method="post" action="edit-user-action.jsp">
-					<dl>
-						<dt>First Name:</dt>
-							<dd><input name="FirstName" value="<%=p.getFirstName()%>"></dd><br>
-						<dt>Last Name:</dt>
-							<dd><input name="LastName" value="<%=p.getLastName()%>"></dd><br>
-						<dt>Username:</dt>
-							<dd><input name="Username" value="<%=p.getUsername()%>" readonly></dd><br>
-						<dt>Password:</dt>
-							<dd><input name="Password" value="<%=p.getPassword()%>"></dd><br>
-						<dt>Type:</dt>
-							<dd><input name="Type" value="<%=p.getType()%>"></dd><br>
-						<dt>Status:</dt>
-							<dd><input name="Status" value="<%=p.getStatus()%>"></dd><br>
-					</dl>
-					<input value="Edit" type="submit"><br>
-					<input value="Reset" type="reset">
-				</form>
-			</div>
+	<div class="pane single">
+		<div class="name-bar">
+			<span><%="Edit user for "+p.getFirstName()+" "+p.getPassword()%></span>
 		</div>
-	</section>
+		<div class="inner-content"> 
+			<form method="post" action="edit-user-action.jsp">
+				<dl>
+					<dt>First Name:</dt>
+						<dd><input name="FirstName" value="<%=p.getFirstName()%>"></dd><br>
+					<dt>Last Name:</dt>
+						<dd><input name="LastName" value="<%=p.getLastName()%>"></dd><br>
+					<dt>Username:</dt>
+						<dd><input name="Username" value="<%=p.getUsername()%>" readonly></dd><br>
+					<dt>Password:</dt>
+						<dd><input name="Password" value="<%=p.getPassword()%>"></dd><br>
+					<dt>Type:</dt>
+						<dd><input type="radio" name="Type" value="u" <%=p.getType()=='u' ? "checked" : ""%>> User&nbsp;
+							<input type="radio" name="Type" value="a" <%=p.getType()=='a' ? "checked" : ""%>> Admin</dd><br>
+					<dt>Status:</dt>
+						<dd><input type="checkbox" name="Status" value="Y" <%=p.getStatus()=='Y' ? "checked" : ""%>> Active
+							<input type="hidden" name="Status" value="N"></dd><br>
+				</dl>
+				<input value="Save User" type="submit"><br>
+				<input value="Reset" type="reset">
+			</form>
+		</div>
+	</div>
+</section>
 </body>
 </html>

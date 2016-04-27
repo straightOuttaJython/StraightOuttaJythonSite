@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="cmc.home.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	PersonHome ph = (PersonHome)session.getAttribute("PersonHome");
+	PersonHome ph = new PersonHome();
 	ph.updatePerson(request.getParameter("Username"),request.getParameter("FirstName"), 
 			request.getParameter("LastName"), request.getParameter("Password"), request.getParameter("Type").charAt(0), 
 			request.getParameter("Status").charAt(0));
