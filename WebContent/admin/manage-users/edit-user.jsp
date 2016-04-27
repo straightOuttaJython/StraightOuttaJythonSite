@@ -3,7 +3,20 @@
 	
 <%PersonHome pph = new PersonHome(); 
 String username = request.getParameter("Username");
-Person p = (Person)pph.getPerson(username);%>
+Person p = (Person)pph.getPerson(username);
+
+try 
+{
+	int error = Integer.parseInt(request.getParameter("Error"));
+		if(error != 0) 
+	{
+		out.println("Please do not leave anything blank!");
+	}
+} 
+catch (NumberFormatException npe) {	
+
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%@include file="/head.jsp"%>

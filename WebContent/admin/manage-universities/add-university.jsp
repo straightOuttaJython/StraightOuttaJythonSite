@@ -7,6 +7,21 @@
 <title>Add University</title>
 </head>
 <body>
+
+<%
+try 
+{
+	int error = Integer.parseInt(request.getParameter("Error"));
+		if(error != 0) 
+	{
+		out.println("Please do not leave anything blank!");
+	}
+} 
+catch (NumberFormatException npe) {	
+
+}
+	
+%>
 	<form method="post" action="add-university-action.jsp" name="editUser">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"

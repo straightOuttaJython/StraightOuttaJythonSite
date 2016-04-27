@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.entity.*" %>
     
+    
     <%
     AdminUI aui = (AdminUI)session.getAttribute("UI"); 
     String school = request.getParameter("school");
     School s = (School)aui.getSchool(school);
+    
     %>
+    <%
+	try 
+	{
+		int error = Integer.parseInt(request.getParameter("Error"));
+   		if(error != 0) 
+    	{
+    		out.println("Please do not leave anything blank!");
+    	}
+	} 
+	catch (NumberFormatException npe) {	
+   
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +28,6 @@
 <title>Edit University</title>
 </head>
 <body>
-
 		<form method="post" action="edit-university-action.jsp" name="editUser">
 		<br>
 		<table style="text-align: left; width: 266px; height: 228px;"

@@ -2,6 +2,19 @@
 	pageEncoding="UTF-8" import="cmc.ui.*" import="cmc.home.*" import= "cmc.entity.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%
+try 
+{
+	int error = Integer.parseInt(request.getParameter("Error"));
+		if(error != 0) 
+	{
+		out.println("Please do not leave anything blank!");
+	}
+} 
+catch (NumberFormatException npe) {	
+
+}
+%>
 <%@include file="/head.jsp"%>
 <%@include file="/header.jsp"%>
 <section id="content">
