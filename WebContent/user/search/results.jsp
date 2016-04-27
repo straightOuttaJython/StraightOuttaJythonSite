@@ -23,7 +23,7 @@
 								<dd><%=school.getControl()%></dd>
 				<dt>Number of Students</dt>
 								<dd><%=school.getNumStudentsEnrolled()%></dd>
-				<form action="results-action.jsp">
+				<form action="save-school-action.jsp">
 					<input type="hidden" name="school" value="<%=school.getName()%>"></input>
 					<input type="submit" value="Save"></input>
 				</form>

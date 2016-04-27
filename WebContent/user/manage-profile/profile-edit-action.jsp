@@ -30,7 +30,7 @@ This is where you make the actual call to edit a user-->
 		
 		ui = new UserUI(login.login(username,password));
 		session.setAttribute("UI",ui);
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("../index.jsp");
 	}
 %>
 </body>
