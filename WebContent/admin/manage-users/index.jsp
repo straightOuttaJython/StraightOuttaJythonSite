@@ -35,7 +35,7 @@
 					<input value="Edit" type="submit">
 				</form>
 				<form action="deactivate-user-action.jsp">
-					<input type="hidden" name="Username" value="<%=p.getUsername()%>">
+					<input type="hidden" name="person" value="<%=p.getUsername()%>">
 					<input value="Deactivate" type="submit">
 				</form>
 			</dl>
