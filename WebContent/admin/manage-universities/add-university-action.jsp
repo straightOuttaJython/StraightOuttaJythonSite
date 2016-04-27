@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="cmc.home.*"%>
+    pageEncoding="UTF-8" import="cmc.ui.*"%>
     
     <%
-	SchoolHome sssh = (SchoolHome)session.getAttribute("SchoolHome");
-	sssh.addSchool(request.getParameter("School"),request.getParameter("State"),
+	AdminUI auI = (AdminUI)session.getAttribute("AdminUI");
+    auI.editSchool(request.getParameter("School"),request.getParameter("State"),
 					  request.getParameter("Location"), request.getParameter("Control"),
 					  Integer.parseInt(request.getParameter("NumStudents")), 
 					  Double.parseDouble(request.getParameter("PercFemal")), 
@@ -18,17 +18,17 @@
 					  Integer.parseInt(request.getParameter("socScale")),
 					  Integer.parseInt(request.getParameter("qualScale"))
 			);
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
+    auI.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
+    auI.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
+    auI.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
+    auI.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
+    auI.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
 	
-	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
-	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
-	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
-	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
-	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
+    auI.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
+    auI.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
+    auI.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
+    auI.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
+    auI.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
 	//Remove the emphasis from that page then add the new one
 	response.sendRedirect("index.jsp");
    %>
