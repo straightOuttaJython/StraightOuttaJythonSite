@@ -42,50 +42,42 @@
 		acaScale.equals("") ||
 		socScale.equals("") ||
 		qualScale.equals("")) {
-		response.sendRedirect("edit-university.jsp?Error=1&school="+request.getParameter("School"));
+		response.sendRedirect("edit-university.jsp?Error=1&school="+schoolName);
 	}
-	else
-	{
-	String[] listEmp = aui.getEmph(schoolName); 
-	aui.addSchool(request.getParameter("School"),request.getParameter("State"),
-					  request.getParameter("Location"), request.getParameter("Control"),
-					  Integer.parseInt(request.getParameter("NumStudents")), 
-					  Double.parseDouble(request.getParameter("PercFemal")), 
-					  Double.parseDouble(request.getParameter("SATVerbal")),
-					  Double.parseDouble(request.getParameter("SATMath")),
-					  Double.parseDouble(request.getParameter("Expenses")),
-					  Double.parseDouble(request.getParameter("finAid")),
-					  Integer.parseInt(request.getParameter("numApps")),
-					  Double.parseDouble(request.getParameter("percAdd")),
-					  Double.parseDouble(request.getParameter("percEnrolled")),
-					  Integer.parseInt(request.getParameter("acaScale")),
-					  Integer.parseInt(request.getParameter("socScale")),
-					  Integer.parseInt(request.getParameter("qualScale"))
-			);
-	
-	aui.removeSchoolEmph(schoolName,listEmp[0]);
-	aui.removeSchoolEmph(schoolName,listEmp[1]);
-	aui.removeSchoolEmph(schoolName,listEmp[2]);
-	aui.removeSchoolEmph(schoolName,listEmp[3]);
-	aui.removeSchoolEmph(schoolName,listEmp[4]);
-	
-	aui.addSchoolEmph(schoolName,emphases1);
-	aui.addSchoolEmph(schoolName,emphases2);
-	aui.addSchoolEmph(schoolName,emphases3);
-	aui.addSchoolEmph(schoolName,emphases4);
-	aui.addSchoolEmph(schoolName,emphases5);
-	response.sendRedirect("index.jsp");
+	else {
+		String[] listEmp = aui.getEmph(schoolName);
+		try {
+			aui.addSchool(request.getParameter("School"),request.getParameter("State"),
+						  request.getParameter("Location"), request.getParameter("Control"),
+						  Integer.parseInt(request.getParameter("NumStudents")), 
+						  Double.parseDouble(request.getParameter("PercFemal")), 
+						  Double.parseDouble(request.getParameter("SATVerbal")),
+						  Double.parseDouble(request.getParameter("SATMath")),
+						  Double.parseDouble(request.getParameter("Expenses")),
+						  Double.parseDouble(request.getParameter("finAid")),
+						  Integer.parseInt(request.getParameter("numApps")),
+						  Double.parseDouble(request.getParameter("percAdd")),
+						  Double.parseDouble(request.getParameter("percEnrolled")),
+						  Integer.parseInt(request.getParameter("acaScale")),
+						  Integer.parseInt(request.getParameter("socScale")),
+						  Integer.parseInt(request.getParameter("qualScale")));
+		}
+		catch (NumberFormatException nFE) {
+			response.sendRedirect("edit-university.jsp?Error=2&school="+schoolName);
+			return;
+		}
+		
+		aui.removeSchoolEmph(schoolName,listEmp[0]);
+		aui.removeSchoolEmph(schoolName,listEmp[1]);
+		aui.removeSchoolEmph(schoolName,listEmp[2]);
+		aui.removeSchoolEmph(schoolName,listEmp[3]);
+		aui.removeSchoolEmph(schoolName,listEmp[4]);
+		
+		aui.addSchoolEmph(schoolName,emphases1);
+		aui.addSchoolEmph(schoolName,emphases2);
+		aui.addSchoolEmph(schoolName,emphases3);
+		aui.addSchoolEmph(schoolName,emphases4);
+		aui.addSchoolEmph(schoolName,emphases5);
+		response.sendRedirect("index.jsp");
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<!-- ERIN
-this is where the call to add the university goes-->
-
-</body>
-</html>
