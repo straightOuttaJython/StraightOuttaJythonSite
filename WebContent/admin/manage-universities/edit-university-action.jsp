@@ -3,7 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	SchoolHome sssh = (SchoolHome)session.getAttribute("SchoolHome");
+	SchoolHome sssh = new SchoolHome();
+	String[] listEmp = sssh.getEmp(request.getParameter("School"));
+	
 	sssh.updateSchool(request.getParameter("School"),request.getParameter("State"),
 					  request.getParameter("Location"), request.getParameter("Control"),
 					  Integer.parseInt(request.getParameter("NumStudents")), 
@@ -19,18 +21,20 @@
 					  Integer.parseInt(request.getParameter("socScale")),
 					  Integer.parseInt(request.getParameter("qualScale"))
 			);
-	School sc = (School)sssh.getSchool(request.getParameter("School"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
-	sssh.removeSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
+	
+	sssh.removeSchoolEmph(request.getParameter("School"),listEmp[0]);
+	sssh.removeSchoolEmph(request.getParameter("School"),listEmp[1]);
+	sssh.removeSchoolEmph(request.getParameter("School"),listEmp[2]);
+	sssh.removeSchoolEmph(request.getParameter("School"),listEmp[3]);
+	sssh.removeSchoolEmph(request.getParameter("School"),listEmp[4]);
 	
 	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases1"));
 	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases2"));
 	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases3"));
 	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases4"));
 	sssh.addSchoolEmph(request.getParameter("School"),request.getParameter("Emphases5"));
+	
+	String[] list = sssh.getEmp(request.getParameter("School"));
 	//Remove the emphasis from that page then add the new one
 	response.sendRedirect("index.jsp");
    %>
