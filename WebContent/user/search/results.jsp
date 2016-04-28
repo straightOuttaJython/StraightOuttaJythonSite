@@ -16,13 +16,13 @@
 		<div class="inner-content">
 			<dl>
 				<dt>State</dt>
-							<dd><%=school.getState()%></dd>
+							<dd><%=school.getState()%></dd><br>
 				<dt>Location</dt>
-							<dd><%=school.getLocation()%></dd>
+							<dd><%=school.getLocation()%></dd><br>
 				<dt>Control</dt>
-								<dd><%=school.getControl()%></dd>
+								<dd><%=school.getControl()%></dd><br>
 				<dt>Number of Students</dt>
-								<dd><%=school.getNumStudentsEnrolled()%></dd>
+								<dd><%=school.getNumStudentsEnrolled()%></dd><br>
 				<form action="save-school-action.jsp">
 					<input type="hidden" name="school" value="<%=school.getName()%>"></input>
 					<input type="submit" value="Save"></input>
