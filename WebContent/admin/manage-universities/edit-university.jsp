@@ -24,6 +24,8 @@
 						out.println("No field may be blank except emphases.");
 					if (error.equals("2"))
 						out.println("Please enter numerical values where requested.");
+					if (error.equals("3"))
+						out.println("Please enter values in valid range or -1.");
 				}
 			%></p>
 			<form method="post" action="edit-university-action.jsp">

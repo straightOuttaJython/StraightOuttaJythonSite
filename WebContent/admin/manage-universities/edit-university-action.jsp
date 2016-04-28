@@ -67,6 +67,10 @@
 			response.sendRedirect("edit-university.jsp?Error=2&school="+schoolName);
 			return;
 		}
+		catch (IllegalArgumentException iAE) {
+			response.sendRedirect("edit-university.jsp?Error=3&school="+schoolName);
+			return;
+		}
 		
 		aui.removeSchoolEmph(schoolName,listEmp[0]);
 		aui.removeSchoolEmph(schoolName,listEmp[1]);
