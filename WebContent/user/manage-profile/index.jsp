@@ -6,12 +6,6 @@
 <%@include file="/head.jsp"%>
 <%@include file="/header.jsp"%>
 <%
-	String myErrors = request.getParameter("Error");
-	if (myErrors!=null && myErrors.equals("-1"))
-		out.println("UserUI was missing");
-	else if(myErrors!=null && myErrors.equals("-2")){
-		out.println("NullPointerException");
-	}
 	UserUI ui = (UserUI) session.getAttribute("UI");
 	Person user = ui.getUser();
 %>
@@ -20,7 +14,14 @@
 			<div class="name-bar">
 				<span>Manage User Profile</span>
 			</div>
-			<div class="inner-content"> 
+			<div class="inner-content">
+				<p><%
+					String error = request.getParameter("Error");
+					if (error!=null && error.equals("-1"))
+						out.println("Please do not leave any fields blank.");
+					else if(error!=null && error.equals("-2"))
+						out.println("Illegal Type or Status");
+				%></p> 
 				<form method="post" action="profile-edit-action.jsp">
 					<dl>
 						<dt>First Name:</dt>

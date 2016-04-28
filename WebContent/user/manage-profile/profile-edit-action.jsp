@@ -16,22 +16,20 @@ This is where you make the actual call to edit a user-->
 	String password = request.getParameter("Password");
 	String username = request.getParameter("Username");
 	UserUI ui = (UserUI) session.getAttribute("UI");
-	if(ui==null){
+	if (firstName.equals("") || lastName.equals("") || password.equals("")) {
 		response.sendRedirect("index.jsp?Error=-1");
 	}
-	else{
-		try {
-			ui.editUser(firstName, lastName, password);
-		}
-		catch (IllegalArgumentException iAE) {
-			response.sendRedirect("index.jsp?Error=-2");
-		}
-		LoginUI login = new LoginUI();
-		
-		ui = new UserUI(login.login(username,password));
-		session.setAttribute("UI",ui);
-		response.sendRedirect("../index.jsp");
+	try {
+		ui.editUser(firstName, lastName, password);
 	}
+	catch (IllegalArgumentException iAE) {
+		response.sendRedirect("index.jsp?Error=-2");
+	}
+	LoginUI login = new LoginUI();
+	
+	ui = new UserUI(login.login(username,password));
+	session.setAttribute("UI",ui);
+	response.sendRedirect("../index.jsp");
 %>
 </body>
 </html>
